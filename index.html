@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta http-equiv="Content-Security-Policy" content="default-src &#39;self&#39;; script-src &#39;self&#39; &#39;sha256-39MRzYiwPlyqTad01yXXvYWb2Gr3tr1cail8MZVvhks=&#39;; style-src &#39;self&#39; &#39;unsafe-inline&#39;; img-src &#39;self&#39; data:; font-src &#39;self&#39;; connect-src &#39;self&#39;; worker-src &#39;self&#39;; manifest-src &#39;self&#39;; object-src &#39;none&#39;; base-uri &#39;self&#39;; form-action &#39;self&#39;">
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <!-- Sayfa açık ve koyu temayı kendisi destekliyor: mobil Chrome / Samsung Internet'in
+         "karanlık mod"u sayfayı kendi kafasına göre ters çevirmesin (beyaz tema lacivert görünüyordu) -->
+    <meta name="color-scheme" content="light dark" />
+    <!-- Başka sitelere geçerken hangi sayfadan gelindiği söylenmez -->
+    <meta name="referrer" content="no-referrer" />
+    <title>Gül Defteri</title>
+    <!-- Simge ve PWA manifesti: tarayıcı uygulamayı "yükle" olarak sunabilsin -->
+    <link rel="icon" href="icon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <!-- Tarayıcı çubuğunun rengi: temanın zemin rengiyle aynı (aşağıdaki betik ayarlar) -->
+    <meta name="theme-color" content="#ecd2ce" />
+    <!-- Tema, sayfa çizilmeden önce ayarlanır: açık temada koyu bir an görünmez -->
+    <script>
+      (function () {
+        var t = null;
+        try {
+          t = localStorage.getItem("gul-tema");
+        } catch (e) {}
+        // Seçim yoksa sitenin kendi rengi: toz pembe açık tema
+        if (t !== "light" && t !== "dark") t = "light";
+        // Tarayıcı sayfayı zorla karartıyorsa (Chrome/Samsung "karanlık mod") koyu temayla aç:
+        // açık tema ters çevrilince yazılar altın-bej görünüyor. Ayrıntı: src/lib/theme.js
+        try {
+          var p = document.createElement("div");
+          p.style.cssText =
+            "position:absolute;visibility:hidden;color-scheme:light;background-color:Canvas";
+          document.documentElement.appendChild(p);
+          var c = getComputedStyle(p).backgroundColor.match(/\d+/g);
+          p.remove();
+          if (c && c.length >= 3 && (+c[0] + +c[1] + +c[2]) / 3 < 100) t = "dark";
+        } catch (e) {}
+        document.documentElement.dataset.theme = t;
+        var m = document.querySelector('meta[name="theme-color"]');
+        if (m) m.content = t === "dark" ? "#26151b" : "#ecd2ce";
+      })();
+    </script>
+    <script type="module" crossorigin src="./assets/index-Cc2CEcIz.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-BExny6cc.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

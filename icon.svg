@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Gül Defteri simgesi: toz pembe zeminde gül -->
+  <rect width="512" height="512" rx="112" fill="#ecd2ce"/>
+  <g fill-rule="evenodd" stroke="#8f3149" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M256 330 C250 380 262 420 256 452" fill="none" stroke="#6f8a68" stroke-width="14"/>
+    <path d="M256 400 C220 372 182 380 166 404 C196 420 232 418 256 400Z" fill="#9cb394" stroke="#6f8a68"/>
+    <path d="M136 230 C128 170 186 140 226 158 C240 128 300 128 312 162 C356 150 392 190 376 236Z" fill="#c2546f"/>
+    <path d="M128 226 C128 300 186 340 256 340 C326 340 384 300 384 226 C352 254 304 262 256 248 C208 262 160 254 128 226Z" fill="#c2546f"/>
+    <path d="M190 220 C190 170 236 156 264 162 C306 170 318 206 310 230 C288 258 214 258 190 220Z" fill="#e08aa0"/>
+    <path d="M226 212 C226 186 256 180 270 192 C284 204 278 224 260 224 C246 224 242 212 252 204" fill="none"/>
+    <path d="M150 260 C186 300 226 304 256 304 C286 304 326 300 362 260" fill="none"/>
+  </g>
+</svg>
