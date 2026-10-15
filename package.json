@@ -1,0 +1,21 @@
+{
+  "name": "ders-takip",
+  "version": "0.1.0",
+  "private": true,
+  "description": "YKS hazırlığı için kişisel ders çalışma takip uygulaması (sunucusuz, kurulabilir web uygulaması)",
+  "workspaces": [
+    "client"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w client",
+    "build": "npm run build -w client",
+    "preview": "npm run preview -w client",
+    "test": "npm test -w client"
+  },
+  "devDependencies": {
+    "better-sqlite3": "^13.0.3"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
