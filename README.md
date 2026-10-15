@@ -7,6 +7,8 @@
 ![PWA](https://img.shields.io/badge/PWA-çevrimdışı%20çalışır-9c3a52)
 ![Testler](https://img.shields.io/badge/test-255%20geçiyor-5c7d55)
 
+### 👉 [Siteyi aç](https://yusufoztoprak495-star.github.io/gul-defteri/)
+
 Kurulum yok, hesap yok. Veriler yalnızca senin tarayıcında durur, hiçbir sunucuya gönderilmez. Telefonda "Ana ekrana ekle" ile uygulama gibi kurulur ve internetsiz de açılır.
 
 ![Ana sayfa: günün sözü, bugünün özeti ve son 7 günün gül bahçesi](docs/screenshots/ana-sayfa.png)
@@ -62,7 +64,7 @@ npm run dev        # http://localhost:5173
 | `npm run build` | Derler (`client/dist`) |
 | `npm run preview` | Derlenmiş hâli dener: `http://localhost:4173` |
 
-`main` dalına her gönderimde GitHub Actions testleri çalıştırır, derler ve GitHub Pages'e yayınlar (`.github/workflows/pages.yml`).
+`main` dalına her gönderimde GitHub Actions testleri çalıştırır, derler ve derlenmiş siteyi `gh-pages` dalına yazar; GitHub Pages o daldan yayınlar (`.github/workflows/pages.yml`).
 
 ### Teknolojiler
 
