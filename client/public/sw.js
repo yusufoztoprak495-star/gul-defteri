@@ -1,6 +1,7 @@
 // Basit servis çalışanı: açılan dosyaları önbelleğe alır, internet yokken oradan verir.
 // Sürüm adı değişince eski önbellek silinir (yeni tasarım/özellik gelince artırılır).
-const CACHE = "ders-takip-v3";
+// Önbellek adı "gul-ders-takip-" ile başlar: aynı alan adındaki başka uygulamaların önbelleğine dokunulmaz
+const CACHE = "gul-ders-takip-v1";
 
 self.addEventListener("install", () => self.skipWaiting());
 
@@ -9,7 +10,7 @@ self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches
       .keys()
-      .then((keys) => Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k))))
+      .then((keys) => Promise.all(keys.filter((k) => k.startsWith("gul-ders-takip-") && k !== CACHE).map((k) => caches.delete(k))))
       .then(() => self.clients.claim()),
   );
 });

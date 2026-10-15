@@ -7,15 +7,15 @@ describe("resolveTheme", () => {
     expect(resolveTheme("dark", false)).toBe("dark");
   });
 
-  it("kayıt yoksa sistem temasına uyar", () => {
-    expect(resolveTheme(null, true)).toBe("dark");
+  it("kayıt yoksa sistem koyu olsa bile toz pembe açık temayla açılır", () => {
+    expect(resolveTheme(null, true)).toBe("light");
     expect(resolveTheme(null, false)).toBe("light");
   });
 
   it.each(["", "mavi", undefined, 5])(
-    "geçersiz kayıt (%s) sistem temasına düşer",
+    "geçersiz kayıt (%s) açık temaya düşer",
     (stored) => {
-      expect(resolveTheme(stored, true)).toBe("dark");
+      expect(resolveTheme(stored, true)).toBe("light");
       expect(resolveTheme(stored, false)).toBe("light");
     },
   );

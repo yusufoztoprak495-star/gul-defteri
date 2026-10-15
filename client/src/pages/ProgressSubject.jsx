@@ -11,7 +11,7 @@ import { useDailyStats } from '../hooks/useDailyStats.js';
 import { daysAgo, toLocalDateString } from '../lib/dates.js';
 import { formatDuration } from '../lib/format.js';
 import EmptyState from '../components/EmptyState.jsx';
-import { EmptyBook } from '../components/Doodles.jsx';
+import { EmptyBook } from '../components/Flowers.jsx';
 
 // Ders sayfası (2. katman): o dersin göstergeleri, zaman grafikleri ve konular (en çok çalışılandan en aza).
 export default function ProgressSubject() {

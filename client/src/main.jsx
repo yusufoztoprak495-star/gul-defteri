@@ -12,6 +12,7 @@ import './decor.css';
 import './luxe.css';
 import './tracks.css';
 import './theme.css';
+import './rose.css';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

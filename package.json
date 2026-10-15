@@ -1,8 +1,8 @@
 {
-  "name": "ders-takip",
+  "name": "gul-defteri",
   "version": "0.1.0",
   "private": true,
-  "description": "YKS hazırlığı için kişisel ders çalışma takip uygulaması (sunucusuz, kurulabilir web uygulaması)",
+  "description": "Üniversite dersleri için toz pembe, güllü ve laleli ders takip sitesi (sunucusuz, kurulabilir web uygulaması)",
   "workspaces": [
     "client"
   ],

@@ -1,36 +1,20 @@
 import { useLocation } from 'react-router-dom';
-import {
-  BookStack,
-  Compass,
-  CornerOrnament,
-  Coffee,
-  DeskLamp,
-  Envelope,
-  FountainPen,
-  Globe,
-  Hourglass,
-  OpenNotebook,
-  Paperclip,
-  Pencil,
-  Ruler,
-  Seal,
-} from './Doodles.jsx';
+import { Bouquet, CornerVine, FallenPetals, RoseBud, RoseStem, TulipPair, WhiteTulip } from './Flowers.jsx';
 
-// Sayfaya göre motif düzeni. Her sayfa farklı bir altı motif alır, ama stil aynıdır:
-// [sağ üst, sağ orta, sağ alt, sol üst, sol alt, sol menü altı]
+// Sayfaya göre çiçek düzeni: [sağ üst, sağ orta, sağ alt, sol üst, sol alt, sol menü altı].
+// Beyaz laleler ve güller sırayla yer değiştirir; her sayfada aynı aile, farklı dizilim.
 const BY_PAGE = {
-  '/': [DeskLamp, FountainPen, Globe, Coffee, Envelope, BookStack],
-  '/pomodoro': [Hourglass, Coffee, Compass, DeskLamp, Seal, Pencil],
-  '/gunluk': [OpenNotebook, FountainPen, Paperclip, Envelope, Hourglass, Seal],
-  '/sorular': [Pencil, Ruler, Compass, BookStack, Paperclip, Globe],
-  '/kaynaklar': [BookStack, DeskLamp, Seal, OpenNotebook, Coffee, FountainPen],
-  '/konular': [Ruler, Globe, OpenNotebook, Compass, FountainPen, Envelope],
-  '/ilerleme': [Compass, Hourglass, Coffee, Ruler, Seal, DeskLamp],
+  '/': [RoseStem, FallenPetals, TulipPair, WhiteTulip, RoseBud, Bouquet],
+  '/pomodoro': [WhiteTulip, RoseBud, FallenPetals, RoseStem, TulipPair, WhiteTulip],
+  '/gunluk': [TulipPair, FallenPetals, RoseStem, RoseBud, WhiteTulip, RoseStem],
+  '/konular': [RoseBud, WhiteTulip, Bouquet, TulipPair, RoseStem, WhiteTulip],
+  '/ilerleme': [RoseStem, TulipPair, FallenPetals, WhiteTulip, RoseBud, Bouquet],
+  '/ayarlar': [Bouquet, FallenPetals, WhiteTulip, RoseBud, TulipPair, RoseStem],
 };
 
 // Süsler yalnızca içerik kutusunun DIŞINDAKİ boş kenar boşluklarında durur: sabit konum ve CSS'te
 // ekran genişliği/yüksekliği şartları (dar ekranda gizlenir) sayesinde veri, form ve grafiklerin
-// üstüne binmez. Dört köşede ornament, kenar boşluklarında sayfaya özel motifler bulunur.
+// üstüne binmez. Dört köşede gül dalı, kenar boşluklarında sayfaya özel çiçekler bulunur.
 export default function Decor() {
   const { pathname } = useLocation();
   const key = pathname.startsWith('/ilerleme') ? '/ilerleme' : pathname;
@@ -39,16 +23,16 @@ export default function Decor() {
   return (
     <div className="decor" aria-hidden="true">
       <span className="decor-item corner corner-tl">
-        <CornerOrnament />
+        <CornerVine />
       </span>
       <span className="decor-item corner corner-tr">
-        <CornerOrnament />
+        <CornerVine />
       </span>
       <span className="decor-item corner corner-bl">
-        <CornerOrnament />
+        <CornerVine />
       </span>
       <span className="decor-item corner corner-br">
-        <CornerOrnament />
+        <CornerVine />
       </span>
 
       <span className="decor-item slot slot-r1">

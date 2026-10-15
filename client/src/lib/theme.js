@@ -2,16 +2,17 @@
 export const THEME_KEY = "gul-tema";
 
 // Tarayıcı çubuğu (theme-color) için temaların zemin rengi; CSS'teki --bg ile aynı
-export const THEME_BAR_COLORS = { dark: "#0c0f14", light: "#f4f5f7" };
+export const THEME_BAR_COLORS = { dark: "#26151b", light: "#ecd2ce" };
 
-// Hangi tema uygulanacak? Kayıtlı geçerli bir seçim varsa o, yoksa bilgisayarın sistem teması.
+// Hangi tema uygulanacak? Kayıtlı geçerli bir seçim varsa o, yoksa toz pembe açık tema
+// (sitenin kimliği pembe; koyu "gece gülü" teması isteyene düğmeyle açılır).
 // İstisna: tarayıcı sayfayı zorla karartıyorsa (Chrome "Auto Dark Mode", Samsung Internet karanlık modu)
 // her zaman koyu tema. Tarayıcı açık temayı kendi kafasına göre ters çevirince sepya yazı
 // altın-bej görünüyor; zaten koyu olan sayfaya ise dokunmuyor.
 export function resolveTheme(stored, systemPrefersDark, forcedDark = false) {
   if (forcedDark) return "dark";
   if (stored === "light" || stored === "dark") return stored;
-  return systemPrefersDark ? "dark" : "light";
+  return "light";
 }
 
 export function nextTheme(theme) {

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import EmptyState from './EmptyState.jsx';
-import { EmptyChart } from './Doodles.jsx';
+import { EmptyChart } from './Flowers.jsx';
 
 // Bir grafiğin kartı: başlık, açıklama ve grafik/tablo görünümü arasında geçiş.
 // Tablo görünümü her grafiğin eşdeğeridir: renk ya da fare imleciyle okunamayan değerler için.

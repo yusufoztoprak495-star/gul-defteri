@@ -2,7 +2,7 @@ import { subjectLabel } from '../lib/tracks.js';
 import { useEffect, useMemo, useState } from 'react';
 import { apiFetch } from '../api.js';
 import ChartCard from '../components/ChartCard.jsx';
-import { EmptyChart } from '../components/Doodles.jsx';
+import { EmptyChart } from '../components/Flowers.jsx';
 import EmptyState from '../components/EmptyState.jsx';
 import ErrorBanner from '../components/ErrorBanner.jsx';
 import { SubjectTimeBars } from '../components/ProgressCharts.jsx';

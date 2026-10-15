@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { apiFetch } from '../api.js';
-import { EmptyChart } from '../components/Doodles.jsx';
+import { EmptyChart, RoseHead, RoseLeaf } from '../components/Flowers.jsx';
 import EmptyState from '../components/EmptyState.jsx';
 import BackupReminder from '../components/BackupReminder.jsx';
 import ErrorBanner from '../components/ErrorBanner.jsx';
@@ -10,35 +10,54 @@ import { daysAgo, toLocalDateString } from '../lib/dates.js';
 import { formatDuration, formatShortDate } from '../lib/format.js';
 import { addDays, studyStreak, topSubjectOfDay, weeklyChange } from '../lib/insights.js';
 import { quoteOfDay } from '../lib/quotes.js';
+import { bloomStage } from '../lib/garden.js';
 
 // Seri ve haftalık karşılaştırma için bu kadar geriye bakılır (daha uzun seriler "365+" yazılır)
 const HISTORY_DAYS = 365;
 
-// Son 7 günün çalışma süresi: eksen ve sayı olmadan, yalnızca ritmi gösteren ince çubuklar.
-// Bugünün çubuğu altın, öncekiler soluk.
-function WeekBars({ days }) {
+// Son 7 günün gül bahçesi: her gün bir gül. Sapın boyu o günün çalışma süresine göre uzar;
+// gül, haftanın en uzun gününe göre gonca → yarı açmış → tam açmış hâle gelir.
+// Hiç çalışılmayan günde yalnızca toprakta küçük bir filiz durur. Bugünün gülü daha koyu.
+function RoseGarden({ days }) {
   const max = Math.max(...days.map((d) => d.totalSeconds), 1);
-  const barWidth = 10;
-  const gap = 44;
-  const height = 90;
+  const gap = 58;
+  const ground = 132;
   return (
     <svg
-      className="week-bars"
-      viewBox={`-16 0 ${days.length * (barWidth + gap) - gap + 32} ${height + 26}`}
+      className="rose-garden flower"
+      viewBox={`0 0 ${(days.length - 1) * gap + 60} ${ground + 26}`}
       role="img"
       aria-label={`Son 7 günün çalışma süresi: ${days
         .map((d) => `${formatShortDate(d.date)} ${formatDuration(d.totalSeconds)}`)
         .join(', ')}`}
     >
+      <path className="ground" d={`M4 ${ground} C${gap * 2} ${ground - 4} ${gap * 5} ${ground - 4} ${(days.length - 1) * gap + 56} ${ground}`} />
       {days.map((day, i) => {
-        const h = day.totalSeconds === 0 ? 2 : Math.max(4, (day.totalSeconds / max) * height);
+        const x = 30 + i * gap;
+        const stage = bloomStage(day.totalSeconds, max);
         const isToday = i === days.length - 1;
+        const label = (
+          <text x={x} y={ground + 20} textAnchor="middle" className={isToday ? 'bar-label today' : 'bar-label'}>
+            {isToday ? 'Bugün' : formatShortDate(day.date)}
+          </text>
+        );
+        if (stage === 'none') {
+          return (
+            <g key={day.date}>
+              <path className="stem" d={`M${x} ${ground} L${x} ${ground - 8}`} />
+              <RoseLeaf x={x} y={ground - 6} rotate={-40} scale={0.45} />
+              {label}
+            </g>
+          );
+        }
+        // Sap boyu 34–100 birim arası
+        const top = ground - (34 + (day.totalSeconds / max) * 66);
         return (
-          <g key={day.date} transform={`translate(${i * (barWidth + gap)} 0)`}>
-            <rect x="0" y={height - h} width={barWidth} height={h} className={isToday ? 'bar today' : 'bar'} />
-            <text x={barWidth / 2} y={height + 20} textAnchor="middle" className="bar-label">
-              {formatShortDate(day.date)}
-            </text>
+          <g key={day.date}>
+            <path className="stem" d={`M${x} ${ground} C${x - 3} ${ground - 30} ${x + 3} ${top + 30} ${x} ${top + 10}`} />
+            <RoseLeaf x={x} y={ground - 22} rotate={i % 2 ? -32 : -148} scale={0.6} />
+            <RoseHead x={x} y={top} scale={stage === 'full' ? 1.05 : 1} stage={stage} deep={isToday} />
+            {label}
           </g>
         );
       })}
@@ -190,7 +209,7 @@ export default function Home() {
               hint="Bir Pomodoro başlat ya da çalışma günlüğüne süre gir; son 7 günün burada görünür."
             />
           ) : (
-            <WeekBars days={view.week} />
+            <RoseGarden days={view.week} />
           )}
 
           <p className="home-actions">

@@ -1,12 +1,12 @@
 {
-  "name": "Ders Çalışma Takibi",
-  "short_name": "Ders Takip",
-  "description": "YKS hazırlığı için pomodoro, çalışma süresi, soru ve kaynak takibi",
+  "name": "Gül Defteri",
+  "short_name": "Gül Defteri",
+  "description": "Üniversite dersleri için pomodoro, çalışma süresi ve ilerleme takibi",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#0c0f14",
-  "theme_color": "#0c0f14",
+  "background_color": "#ecd2ce",
+  "theme_color": "#ecd2ce",
   "lang": "tr",
   "icons": [
     { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },

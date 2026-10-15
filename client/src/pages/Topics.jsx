@@ -3,7 +3,7 @@ import { apiFetch } from '../api.js';
 import EmptyState from '../components/EmptyState.jsx';
 import ErrorBanner from '../components/ErrorBanner.jsx';
 import TopicRow from '../components/TopicRow.jsx';
-import { EmptyChart } from '../components/Doodles.jsx';
+import { EmptyChart } from '../components/Flowers.jsx';
 
 // Ders adının yanındaki grup alanı üniversitede dönemdir
 const GROUP_LABEL = 'Dönem';

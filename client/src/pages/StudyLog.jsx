@@ -6,7 +6,7 @@ import { useSubjectSelection } from '../hooks/useSubjectSelection.js';
 import { noonOfLocalDate, toLocalDateString } from '../lib/dates.js';
 import { addedNotice, formatDuration } from '../lib/format.js';
 import EmptyState from '../components/EmptyState.jsx';
-import { EmptyNote } from '../components/Doodles.jsx';
+import { EmptyNote } from '../components/Flowers.jsx';
 
 const timeOf = (iso) =>
   new Date(iso).toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' });

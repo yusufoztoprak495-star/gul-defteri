@@ -1,0 +1,301 @@
+/* --- Gül Defteri teması ---
+   Açık tema (varsayılan): toz pembe zemin, pembe-beyaz kâğıt kartlar, gül kurusu mürekkep,
+   koyu gül vurgusu, adaçayı yeşili sap ve yapraklar, beyaz laleler.
+   Koyu tema ("gece gülü"): şarap rengi zemin, pudra pembesi yazı ve vurgu.
+   Bu dosya en son yüklenir: önceki temaların aynı adlı değişkenlerini ezer. Bileşenlerde renk
+   yazılmaz, hepsi buradaki değişkenlerden gelir.
+   Kontrast (WCAG AA) client/scripts/contrast.mjs ile ölçüldü: yazı en az 4.5:1, grafik işaretleri 3:1. */
+
+/* Koyu tema: gece gülü */
+:root {
+  --bg: #26151b;
+  --surface: #331d24;
+  --surface-2: #3c232b;
+  --text: #f6e6e7;
+  --muted: #c9a7af;
+  --border: #4a2d36;
+  --border-strong: #64404b;
+
+  --gold: #eaa6b4;
+  --gold-hair: rgba(234, 166, 180, 0.22);
+  --gold-text: #eeb3bf;
+  --accent-fill: #eaa6b4;
+  --on-accent: #2a1218;
+  --accent-2: #f0c2cb;
+  --teal: #a7c4a0; /* yaprak yeşili: mola, olumlu değişim */
+  --rose: #ff9a9a;
+
+  --danger-bg: #43202a;
+  --danger-text: #ffc2c7;
+
+  --series-1: #e98fa3;
+  --series-2: #a7c4a0;
+  --series-3: #f2b38a;
+  --series-blank: #9c8a8e;
+  --series-dim: #55343e;
+  --chart-grid: #3c242c;
+  --chart-axis: #64404b;
+
+  --nav-bg: #2d1920;
+  --paper-line: rgba(234, 166, 180, 0.05);
+  --card-shadow: 0 1px 0 rgba(255, 220, 228, 0.06) inset, 0 10px 30px rgba(0, 0, 0, 0.25);
+  --btn-hover: brightness(1.06);
+  --mark-hover: brightness(1.2);
+  --grain-opacity: 0.07;
+
+  /* Çiçek boyaları */
+  --ink: #e9b9c3;
+  --petal-white: #fbf2f3;
+  --petal-white-shade: #ead6da;
+  --petal-rose: #d9798f;
+  --petal-rose-light: #f0a9b8;
+  --petal-rose-deep: #b8445f;
+  --petal-rose-deep-light: #d86a83;
+  --leaf: #7f9b78;
+  --leaf-vein: #5d7757;
+  --stem: #8aa682;
+  --paper-fill: #3f262e;
+  --flower-opacity: 0.85;
+
+  --radius: 10px;
+  /* Zemin deseni: seyrek beyaz laleler ve gül goncaları (kartların arkasında kalır) */
+  --pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M40 58 C39 70 41 80 40 90' stroke='rgba%28138,166,130,0.06%29' stroke-width='1.2'/%3E%3Cpath d='M40 86 C33 80 31 72 33 66 C36 72 38 78 40 82Z' fill='rgba%28138,166,130,0.06%29'/%3E%3Cpath d='M31 38 C30 49 34 58 40 58 C46 58 50 49 49 38 C46 42 43 43 41 40 C40 44 35 44 31 38Z' fill='rgba%28251,242,243,0.035%29' stroke='rgba%28233,185,195,0.05%29' stroke-width='0.8'/%3E%3Cpath d='M35 40 C34 50 37 57 40 58 C43 57 46 50 45 40 C43 43 41 43 40 38 C39 43 37 43 35 40Z' fill='rgba%28251,242,243,0.07%29' stroke='rgba%28233,185,195,0.05%29' stroke-width='0.8'/%3E%3Cpath d='M120 138 C119 128 121 120 120 112' stroke='rgba%28138,166,130,0.06%29' stroke-width='1.2'/%3E%3Cpath d='M120 96 C114 102 114 110 120 113 C126 110 126 102 120 96Z' fill='rgba%28217,121,143,0.07%29' stroke='rgba%28233,185,195,0.05%29' stroke-width='0.8'/%3E%3Cpath d='M120 114 C116 112 114 108 114 104 C116 107 118 109 120 110 C122 109 124 107 126 104 C126 108 124 112 120 114Z' fill='rgba%28138,166,130,0.06%29'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Açık tema: toz pembe (varsayılan) */
+:root[data-theme="light"] {
+  --bg: #ecd2ce;
+  --surface: #fcf4f2;
+  --surface-2: #f7e8e5;
+  --text: #3b1d25;
+  --muted: #74505a;
+  --border: #ead0cc;
+  --border-strong: #d4aaa9;
+
+  --gold: #9c3a52;
+  --gold-hair: rgba(156, 58, 82, 0.16);
+  --gold-text: #8f3149;
+  --accent-fill: #9c3a52; /* düğme dolgusu; beyaz yazı ~7:1 */
+  --on-accent: #ffffff;
+  --accent-2: #b0405c;
+  --teal: #4f6d4a;
+  --rose: #a3303f;
+
+  --danger-bg: #fbe1e1;
+  --danger-text: #8a2333;
+
+  --series-1: #b4486a;
+  --series-2: #5c7d55;
+  --series-3: #c2703f;
+  --series-blank: #9a8a8e;
+  --series-dim: #edd5d3;
+  --chart-grid: #f1e0dd;
+  --chart-axis: #d9b8b6;
+
+  --nav-bg: #fbf1ef;
+  --paper-line: rgba(156, 58, 82, 0.045);
+  --card-shadow: 0 1px 2px rgba(110, 40, 58, 0.06), 0 8px 24px rgba(110, 40, 58, 0.07);
+  --btn-hover: brightness(1.12);
+  --mark-hover: brightness(0.88);
+  --grain-opacity: 0.05;
+
+  --ink: #9a6070;
+  --petal-white: #ffffff;
+  --petal-white-shade: #f5e6e8;
+  --petal-rose: #e7a3b0;
+  --petal-rose-light: #f5c9d1;
+  --petal-rose-deep: #c2546f;
+  --petal-rose-deep-light: #e08aa0;
+  --leaf: #9cb394;
+  --leaf-vein: #6f8a68;
+  --stem: #7f9a77;
+  --paper-fill: #fffafa;
+  --flower-opacity: 1;
+  --pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M40 58 C39 70 41 80 40 90' stroke='rgba%28127,154,119,0.17%29' stroke-width='1.2'/%3E%3Cpath d='M40 86 C33 80 31 72 33 66 C36 72 38 78 40 82Z' fill='rgba%28127,154,119,0.17%29'/%3E%3Cpath d='M31 38 C30 49 34 58 40 58 C46 58 50 49 49 38 C46 42 43 43 41 40 C40 44 35 44 31 38Z' fill='rgba%28255,255,255,0.42%29' stroke='rgba%28154,96,112,0.13%29' stroke-width='0.8'/%3E%3Cpath d='M35 40 C34 50 37 57 40 58 C43 57 46 50 45 40 C43 43 41 43 40 38 C39 43 37 43 35 40Z' fill='rgba%28255,255,255,0.42%29' stroke='rgba%28154,96,112,0.13%29' stroke-width='0.8'/%3E%3Cpath d='M120 138 C119 128 121 120 120 112' stroke='rgba%28127,154,119,0.17%29' stroke-width='1.2'/%3E%3Cpath d='M120 96 C114 102 114 110 120 113 C126 110 126 102 120 96Z' fill='rgba%28231,163,176,0.26%29' stroke='rgba%28154,96,112,0.13%29' stroke-width='0.8'/%3E%3Cpath d='M120 114 C116 112 114 108 114 104 C116 107 118 109 120 110 C122 109 124 107 126 104 C126 108 124 112 120 114Z' fill='rgba%28127,154,119,0.17%29'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* --- Çiçek çizimlerinin boyaları --- */
+.flower {
+  display: block;
+  overflow: visible;
+  opacity: var(--flower-opacity);
+}
+
+.flower * {
+  vector-effect: non-scaling-stroke;
+}
+
+.flower .petal-white {
+  fill: var(--petal-white);
+  stroke: var(--ink);
+  stroke-width: 1.1;
+}
+
+.flower .petal-white.back {
+  fill: var(--petal-white-shade);
+}
+
+.flower .petal-rose {
+  fill: var(--petal-rose);
+  stroke: var(--ink);
+  stroke-width: 1.1;
+}
+
+.flower .petal-rose-light {
+  fill: var(--petal-rose-light);
+  stroke: var(--ink);
+  stroke-width: 0.9;
+}
+
+.flower .petal-rose.deep {
+  fill: var(--petal-rose-deep);
+}
+
+.flower .petal-rose-light.deep {
+  fill: var(--petal-rose-deep-light);
+}
+
+.flower .ink-fine {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 0.8;
+  opacity: 0.85;
+}
+
+.flower .leaf,
+.flower .sepal {
+  fill: var(--leaf);
+  stroke: var(--leaf-vein);
+  stroke-width: 0.9;
+}
+
+.flower .vein {
+  fill: none;
+  stroke: var(--leaf-vein);
+  stroke-width: 0.6;
+  opacity: 0.8;
+}
+
+.flower .stem {
+  fill: none;
+  stroke: var(--stem);
+  stroke-width: 1.6;
+}
+
+.flower .stem.thin {
+  stroke-width: 1.1;
+}
+
+.flower .thorn {
+  fill: var(--stem);
+  stroke: var(--stem);
+  stroke-width: 0.8;
+}
+
+.flower .ground {
+  fill: none;
+  stroke: var(--border-strong);
+  stroke-width: 1.2;
+}
+
+.flower .paper {
+  fill: var(--paper-fill);
+  stroke: var(--ink);
+  stroke-width: 1;
+}
+
+.flower .vase {
+  fill: var(--petal-white);
+  stroke: var(--ink);
+  stroke-width: 1.1;
+}
+
+/* Çiçekler kare değil, uzun: kenar yuvaları ona göre ortalanır */
+/* (decor.css kare çizime göre -38px veriyordu; aynı seçici, sonra yüklendiği için bu geçerli) */
+.slot-r2 {
+  margin-top: -57px;
+}
+
+/* --- Ana sayfa: son 7 günün gül bahçesi --- */
+.rose-garden {
+  width: min(100%, 520px);
+  margin: 12px 0 28px;
+  opacity: 1;
+}
+
+.rose-garden .bar-label {
+  fill: var(--muted);
+  font-family: var(--font-ui);
+  font-size: 10.5px;
+}
+
+.rose-garden .bar-label.today {
+  fill: var(--gold-text);
+  font-weight: 600;
+}
+
+/* --- Boş durumlar ve küçük dokunuşlar --- */
+.empty-state .flower {
+  margin-bottom: 14px;
+}
+
+/* Menüdeki site adı: gül kurusu, alt satır büyük harfsiz */
+.brand-track {
+  letter-spacing: 0.01em;
+  text-transform: none;
+  font-size: 0.8rem;
+}
+
+/* Düğmeler yuvarlak uçlu: taç yaprağı gibi yumuşak */
+button,
+.button-link {
+  border-radius: 999px;
+}
+
+/* Gün sözü kartı: sol kenarda ince gül çizgisi */
+.daily-quote {
+  border-left: 2px solid var(--petal-rose-deep);
+}
+
+/* --- Zemin: defter çizgileri yerine seyrek lale ve gonca deseni --- */
+body {
+  background-image: var(--pattern);
+  background-size: 200px 200px;
+}
+
+/* --- Etiketler: büyük harf ve geniş aralık yerine eğik, yumuşak yazı --- */
+.panel-label,
+.dial-label {
+  font-size: 1.08rem;
+  font-weight: 500;
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--gold-text);
+}
+
+.label,
+label,
+.tile .muted,
+.stat-head span,
+.table-wrap th {
+  font-size: 0.98rem;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0.01em;
+}
+
+/* Ders ve konu listeleri zeminin desenine binmesin: kart yüzeyi verilir */
+.stat-list {
+  padding: 6px 14px 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+}
+
+/* Günün sözü kartsız durur; desen yazının arkasında okunurluğu bozmasın diye hafif örtü */
+.daily-quote {
+  padding-right: 16px;
+  background: linear-gradient(to right, color-mix(in srgb, var(--bg) 85%, transparent), transparent);
+}
